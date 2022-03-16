@@ -1,5 +1,10 @@
 # README
 
+## USED HERE:
+
+1) VUE 2 
+2) AXIOS
+
 ## TODO:
 
 0) fix the FIXME: in code ;]
