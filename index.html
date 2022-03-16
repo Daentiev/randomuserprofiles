@@ -45,7 +45,7 @@
       <div class="col-sm">
         <ul>
           <div v-for="(human, key) in people" :key="key">
-              <li>
+              <li id="key">
                 <div v-on:click="getChosenPerson(key)">
                   <img v-bind:src="human.picture.thumbnail" v-bind:alt="human" class="picture">
                   {{ human.name.first }} {{ human.name.last }} - {{ human.email }}
