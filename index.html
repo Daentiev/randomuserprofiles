@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Random profiles (vue+ts) </title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js" defer></script>
+  <script src="app.ts" defer></script>
+</head>
+<body>
+<header>
+  <h1>Random Profiles</h1>
+</header>
+<section id="profile-listing">
+  <div id="app">
+    <div class="row">
+      <div class="col-sm">
+        <h2>{{ title }}</h2>
+        <div class="chosen-one" v-if="chosenPerson != null">
+          <img v-bind:src="chosenPerson.picture.large" v-bind:alt="chosenPerson" class="picture">
+          <div class="chosen-one">
+            <div class="chosen-one-name">
+              <h3>{{ chosenPerson.name.first }} {{ chosenPerson.name.last }}</h3>
+            </div>
+            <div class="chosen-one-mail">
+              <a v-bind:href="'mailto:' + chosenPerson.email">{{ chosenPerson.email }}</a>
+            </div>
+            <div class="chosen-one-address">
+              {{ chosenPerson.location.street.number }} {{ chosenPerson.location.city }} {{ chosenPerson.location.state }}
+            </div>
+            <div class="chosen-one-birth">
+              Birthdate: {{ chosenPerson.dob.date }}
+            </div>
+            <div class="chosen-one-registered">
+              <div>Registration Date: {{ chosenPerson.registered.date[0] }}</div>
+              <div>Registration Time: {{ chosenPerson.registered.date[1] }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <ul>
+          <div v-for="(human, key) in people" :key="key">
+              <li>
+                <div v-on:click="getChosenPerson(key)">
+                  <img v-bind:src="human.picture.thumbnail" v-bind:alt="human" class="picture">
+                  {{ human.name.first }} {{ human.name.last }} - {{ human.email }}
+                </div>
+              </li>
+          </div>
+          <button class="load-more-button" v-on:click="getPeople"> LOAD MOAR </button>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
