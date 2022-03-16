@@ -2,7 +2,7 @@
     var app = new Vue ({
         el: '#app',
         data: {
-            title:"Selected Profile",
+            title: "Selected Profile",
             people: [],
             chosenPerson: null,
             endpoint: "https://randomuser.me/api/?results=",
