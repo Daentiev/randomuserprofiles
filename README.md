@@ -1,5 +1,11 @@
 # README
 
+## USED HERE:
+
+>VUE 3
+> 
+>AXIOS
+
 ## TODO:
 
 0) fix the FIXME: in code ;]
